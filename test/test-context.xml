@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/jee
+		http://www.springframework.org/schema/jee/spring-jee-2.5.xsd">
+
+	<!--
+		the test application context definition for the jdbc based tests
+	-->
+
+	<!-- Properties file in WEB-INF/classes -->
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:bcc.properties</value>
+		</property>
+	</bean>
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.user}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.bigcybercity.entity.Photo
+				</value>
+				<value>com.bigcybercity.entity.User
+				</value>
+				<value>com.bigcybercity.entity.Comment
+				</value>
+				<value>com.bigcybercity.entity.Friend
+				</value>
+				<value>com.bigcybercity.entity.Mail
+				</value>				
+				<value>com.bigcybercity.entity.Alert
+				</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLInnoDBDialect
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="userDao" class="com.bigcybercity.dao.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="photoDao" class="com.bigcybercity.dao.PhotoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+	<bean id="photoService" class="com.bigcybercity.service.PhotoServiceImpl">
+		<property name="userDao" ref="userDao" />
+		<property name="photoDao" ref="photoDao" />
+	</bean>		
+	
+	<bean id="sqlService" class="com.bigcybercity.service.SqlServiceImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="userService" class="com.bigcybercity.service.UserServiceImpl" >
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="userDao" ref="userDao" />
+	</bean>
+
+	<bean id="userDaoTests" class="com.bigcybercity.dao.UserDaoTests">
+		<property name="userDao" ref="userDao" />
+	</bean>
+
+	<bean id="photoDaoTests" class="com.bigcybercity.dao.PhotoDaoTests">
+		<property name="photoDao" ref="photoDao" />
+	</bean>
+	
+	<bean id="photoServiceTests" class="com.bigcybercity.service.PhotoServiceTests">
+		<property name="photoService" ref="photoService" />
+	</bean>	
+	
+	<bean id="sqlServiceTests" class="com.bigcybercity.service.SqlServiceTests">
+		<property name="sqlService" ref="sqlService" />
+	</bean>
+	
+	<bean id="userServiceTests" class="com.bigcybercity.service.UserServiceTests">
+		<property name="userService" ref="userService" />
+		<property name="sqlService" ref="sqlService" />
+	</bean>
+
+</beans>
