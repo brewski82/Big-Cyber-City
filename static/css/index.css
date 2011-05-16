@@ -1,0 +1,22 @@
+.left {
+	float: left;
+	width: 180px;
+	margin-right: 25px;
+	margin-top: 15px;
+}
+
+.login_box {
+	width: 142px;
+	height: 300px;
+	padding-top: 5px;
+	padding-left: 19px;
+	padding-right: 19px;
+	background-image: url(/static/images/side_banner.gif);
+	background-repeat: no-repeat;
+	text-align: left;
+}
+
+.login_box h3 {
+	padding: 0px;
+	margin: 0px;
+}

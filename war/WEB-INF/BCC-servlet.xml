@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.directwebremoting.org/schema/spring-dwr
+    http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd">
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles2.TilesView">
+		</property>
+	</bean>
+	
+	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+	  <property name="exceptionMappings">
+	    <props>
+	      <prop key="java.lang.Exception">friendlyError</prop>
+	    </props>
+	  </property>
+	</bean>
+	
+
+	<bean name="/people.htm" class="com.bigcybercity.presentation.PeopleController">		
+		<property name="userService" ref="userService" />
+		<property name="sqlService" ref="sqlService" />
+		<dwr:remote javascript="peopleSearch">
+			<dwr:include method="search" />
+			<dwr:convert type="bean" class="com.bigcybercity.util.SearchInput">
+			</dwr:convert>
+		</dwr:remote>
+	</bean>
+	
+	<bean name="/comments.htm" class="com.bigcybercity.presentation.CommentsController">
+		<property name="userService" ref="userService" />
+		<dwr:remote javascript="comments" >
+			<dwr:include method="viewPage" />
+			<dwr:include method="deleteComment" />
+		</dwr:remote>
+	</bean>	
+	
+	<bean name="/postedComments.htm" class="com.bigcybercity.presentation.PostedCommentsController">
+		<property name="userService" ref="userService" />		
+		<dwr:remote javascript="postedComments" >
+			<dwr:include method="viewPage" />
+			<dwr:include method="deleteComment" />
+		</dwr:remote>
+	</bean>		
+	
+	<bean name="/friends.htm" class="com.bigcybercity.presentation.FriendsController">
+		<property name="userService" ref="userService" />
+		<dwr:remote javascript="friends" >
+			<dwr:include method="viewPage" />
+			<dwr:include method="deleteFriend" />
+		</dwr:remote>
+	</bean>		
+
+	<bean name="/testing.htm" class="com.bigcybercity.presentation.TestController">
+		
+	</bean>
+
+	<bean name="/profile.htm" class="com.bigcybercity.presentation.ProfileController">
+		<property name="userService" ref="userService" />
+		<property name="mailService" ref="mailService" />
+		<dwr:remote javascript="profile">
+			<dwr:include method="requestFriend" />
+			<dwr:include method="deleteComment" />
+		</dwr:remote>
+	</bean>
+	
+	<bean name="/dashboard.htm" class="com.bigcybercity.presentation.DashboardController">
+		<property name="userService" ref="userService" />
+		<dwr:remote javascript="dashboard" >
+			<dwr:include method="deleteAlert" />
+			<dwr:include method="addFriend" />
+		</dwr:remote>		
+	</bean>
+	
+	<bean name="/viewPhoto.htm" class="com.bigcybercity.presentation.PhotoController">
+		<property name="photoService" ref="photoService" />
+	</bean>
+	
+	<bean name="/editProfile.htm" class="com.bigcybercity.presentation.EditProfileController">
+		<property name="userService" ref="userService" />
+	</bean>	
+	
+	<bean name="/editPhotos.htm" class="com.bigcybercity.presentation.EditPhotosController">
+		<property name="userService" ref="userService" />
+		<property name="photoService" ref="photoService" />
+	</bean>		
+
+	<bean name="/HOME" class="com.bigcybercity.presentation.HomeController">
+	</bean>
+	
+	<bean name="/inbox.htm" class="com.bigcybercity.presentation.InboxController">
+		<property name="userService" ref="userService" />
+		<dwr:remote javascript="inbox" >
+			<dwr:include method="viewPage" />
+			<dwr:include method="deleteMessage" />
+		</dwr:remote>
+	</bean>		
+	
+	<bean name="/outbox.htm" class="com.bigcybercity.presentation.OutboxController">
+		<property name="userService" ref="userService" />
+		<dwr:remote javascript="outbox" >
+			<dwr:include method="viewPage" />
+			<dwr:include method="deleteMessage" />
+		</dwr:remote>
+	</bean>		
+	
+	<bean name="/composeMessage.htm" class="com.bigcybercity.presentation.ComposeMessageController">
+		<property name="mailDao" ref="mailDao" />
+		<property name="userService" ref="userService" />
+		<property name="mailService" ref="mailService" />
+<!--		<dwr:remote javascript="compose" >-->
+<!--			<dwr:include method="viewPage" />-->
+<!--			<dwr:include method="deleteMessage" />-->
+<!--		</dwr:remote>-->
+	</bean>			
+	
+<bean name="/account.htm" class="com.bigcybercity.presentation.AccountController">
+		<property name="userService" ref="userService" />
+		<dwr:remote javascript="account" >
+			<dwr:include method="changeEmail" />
+			<dwr:include method="changePassword" />
+			<dwr:include method="deleteAccount" />
+		</dwr:remote>
+</bean>	
+
+<bean name="/password.htm" class="com.bigcybercity.presentation.PasswordController">
+		<property name="mailService" ref="mailService" />
+		<dwr:remote javascript="password" >
+			<dwr:include method="sendPassword" />
+		</dwr:remote>
+</bean>	
+	
+<bean name="/admin.htm" class="com.bigcybercity.presentation.AdminController">
+		<property name="userService" ref="userService" />
+		<dwr:remote javascript="admin" >
+			<dwr:include method="deleteAccount" />
+		</dwr:remote>
+</bean>		
+	
+<bean name="/register.htm" class="com.bigcybercity.presentation.RegisterController">
+		<property name="sqlService" ref="sqlService" />
+		<property name="mailService" ref="mailService" />
+		<dwr:remote javascript="register" >
+			<dwr:include method="reg" />
+		</dwr:remote>
+	</bean>		
+	
+	<bean name="/postComment.htm" class="com.bigcybercity.presentation.PostCommentController">
+		<property name="userService" ref="userService" />
+		<property name="mailService" ref="mailService" />
+	</bean>		
+	
+	<bean name="/confirmAccount.htm" class="com.bigcybercity.presentation.ConfirmAccountController">
+		<property name="sqlService" ref="sqlService" />
+	</bean>		
+
+
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/BCC-tiles.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<dwr:configuration></dwr:configuration>
+
+	<dwr:controller id="dwrController" debug="false" />
+
+</beans>

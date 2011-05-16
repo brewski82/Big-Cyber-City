@@ -1,0 +1,81 @@
+Big Cyber City is a basic social network implemented in Java. It uses
+many open source libraries and runs on Tomcat.
+
+My primary purpose for creating this web application was to learn Java
+back when I was in college. It is not production ready, but I believe
+it serves as good example code for how to use some of the popular open
+source libraries.
+
+You can see this site in action by going to
+http://bigcybercity.com. However, I am not actively maintaining the site
+but rather leaving it up for my portfolio.
+
+The code comes with a BSD license. See the LICENSE file for details.
+
+Prerequisites
+- You must have Java, Tomcat and Mysql installed. 
+- BCC depends on many open source libraries, including Spring, DWR,
+Hibernate, and more. 
+
+Installation
+- Create the database on MySql using the file BCC.sqll
+- Clone the repository.
+- Modify the files BCC-data.xml, build.xml, build.properties and
+bcc.properties accordingly.
+- Install referenced libraries in the list at the end of this file.
+- At this point the project should build properly. You can modify the
+build script to your liking. It comes with code to automatically
+deploy to a local tomcat directory and restart tomcat.
+- The "static" and "photos" directories are not meant to be served
+from tomcat but rather a static web server, such as nginx. 
+
+Referenced Libraries
+
+antlr-2.7.6.jar
+asm-attrs.jar
+asm.jar
+aspectjweaver.jar
+cglib-2.1.3.jar
+commons-beanutils-1.8.0.jar
+commons-collections-2.1.1.jar
+commons-dbcp.jar
+commons-digester-1.8.jar
+commons-fileupload-1.2.1.jar
+commons-io-1.4.jar
+commons-logging.jar
+commons-pool.jar
+dom4j-1.6.1.jar
+dwr.jar
+hibernate-annotations.jar
+hibernate-commons-annotations.jar
+hibernate3.jar
+jstl.jar
+jta.jar
+junit-3.8.2.jar
+log4j-1.2.11.jar
+mail.jar
+mysql-connector-java-5.1.6-bin.jar
+persistence.jar
+spring-aop.jar
+spring-beans.jar
+spring-context-support.jar
+spring-context.jar
+spring-core.jar
+spring-jdbc.jar
+spring-jms.jar
+spring-orm.jar
+spring-security-core-2.0.4.jar
+spring-security-taglibs-2.0.4.jar
+spring-test.jar
+spring-tx.jar
+spring-web.jar
+spring-webmvc-portlet.jar
+spring-webmvc-struts.jar
+spring-webmvc.jar
+spring.jar
+standard.jar
+tiles-api-2.0.5.jar
+tiles-core-2.0.5.jar
+tiles-jsp-2.0.5.jar
+/usr/share/tomcat6/lib
+/usr/share/tomcat6/lib/servlet-api.jar

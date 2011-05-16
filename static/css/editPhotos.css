@@ -1,0 +1,20 @@
+#editPhotos {
+	text-align: center;
+}
+
+#editPhotos table {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+
+#editPhotos td {
+	padding: 10px;
+	border-top: 1px solid #C9D7F1;;
+}
+
+#editPhotos form {
+	padding: 10px;
+	font-size: 18pt;
+}
+

@@ -1,0 +1,17 @@
+#commentForm {
+	margin: 10px;
+	padding: 10px;
+}
+
+#confirmAccount {
+	text-align: center;
+}
+
+#alerts  {
+	font-size: 16pt;
+	font-weight: bold;
+	margin: 10px;
+	background: #FFFFCC none repeat scroll 0 0;
+	padding: 10px;
+	color: red;
+}

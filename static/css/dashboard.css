@@ -1,0 +1,23 @@
+#menu ul {
+list-style-type: none;
+font-size: 24pt;
+margin: 10px;
+}
+
+#menu li {
+margin: 10px
+}
+
+#dashboard {
+text-align: center;
+}
+
+#alerts  {
+	font-size: 16pt;
+	font-weight: bold;
+	margin: 10px;
+	background: #FFFFCC none repeat scroll 0 0;
+	padding: 10px;
+	color: red;
+}
+

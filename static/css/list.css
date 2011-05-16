@@ -1,0 +1,53 @@
+#searchBox, .pageBox {
+	margin: 20px 0px 20px 0px;
+	padding: 10px;
+	border: solid #006699 1px;
+	text-align: center;
+	font-weight: bold;
+}
+
+table {
+	margin-bottom: 15px;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.stats {
+	text-align: left;
+}
+
+.name {
+	font-size: 28px;
+}
+
+.picture {
+	text-align: right;
+	padding-right: 30px;
+}
+
+.currentPage {
+	font-size: 18pt;
+}
+
+.arrows {
+	font-size: 24pt
+}
+
+.description {
+font-size: 20pt;
+text-align: center;
+margin: 20px;
+}
+
+#reply td {
+    padding: 5px 2px 0px 5px;
+border-top:1px solid #C9D7F1;
+verticle-align: top;
+}
+
+#sub {
+text-align: center;
+}
+

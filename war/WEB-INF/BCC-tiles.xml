@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="BCC_Template" template="/WEB-INF/jsp/BCC_Template.jsp">
+		<put-attribute name="title" value="Big Cyber City" />
+		<put-list-attribute name="css">
+		</put-list-attribute>
+		<put-list-attribute name="js">
+		</put-list-attribute>
+		<put-list-attribute name="dwr">
+		</put-list-attribute>
+	</definition>
+	<definition name="home" extends="BCC_Template">
+		<put-attribute name="title" value="Welcome to Big Cyber City" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/home.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="slideshow.css" />
+			<add-attribute value="index.css" />
+		</put-list-attribute>
+	</definition>
+	<definition name="people" extends="BCC_Template">
+		<put-attribute name="title" value="Browse Big Cyber City Citizens" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/people.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="list.css" />
+		</put-list-attribute>
+		<put-list-attribute name="dwr">
+			<add-attribute value="peopleSearch.js" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+			<add-attribute value="people.js" />
+		</put-list-attribute>
+	</definition>
+	<definition name="profile" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City Profile" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/profile.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="profile.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+			<add-attribute value="profile.js" />
+		</put-list-attribute>
+		<put-list-attribute name="dwr">
+			<add-attribute value="profile.js" />
+		</put-list-attribute>
+	</definition>
+	<definition name="login" extends="BCC_Template">
+		<put-attribute name="title" value="Please log in to Big Cyber City" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/login.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="login.css" />
+		</put-list-attribute>
+	</definition>
+	<definition name="friendlyError" extends="BCC_Template">
+		<put-attribute name="title" value="Opps!" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/friendlyError.jsp" />
+	</definition>	
+	<definition name="pageNotFound" extends="BCC_Template">
+		<put-attribute name="title" value="Opps!" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/pageNotFound.jsp" />
+	</definition>		
+	<definition name="beta" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City Beta" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/beta.jsp" />
+	</definition>		
+	<definition name="contact" extends="BCC_Template">
+		<put-attribute name="title" value="Contact Big Cyber City " />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/contact.jsp" />
+	</definition>	
+	<definition name="comments" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City - View All Comments" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/list.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="list.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+			<add-attribute value="list.js" />
+			<add-attribute value="comments.js" />
+		</put-list-attribute>
+		<put-list-attribute name="dwr">
+			<add-attribute value="comments.js" />
+		</put-list-attribute>
+	</definition>
+	<definition name="postedComments" extends="BCC_Template">
+		<put-attribute name="title"
+			value="Big Cyber City - View Posted Comments" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/list.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="list.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+			<add-attribute value="list.js" />
+			<add-attribute value="postedComments.js" />
+		</put-list-attribute>
+		<put-list-attribute name="dwr">
+			<add-attribute value="postedComments.js" />
+		</put-list-attribute>
+	</definition>
+	<definition name="friends" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City - View All Friends" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/list.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="list.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+			<add-attribute value="list.js" />
+			<add-attribute value="friends.js" />
+		</put-list-attribute>
+		<put-list-attribute name="dwr">
+			<add-attribute value="friends.js" />
+		</put-list-attribute>
+	</definition>
+	<definition name="photo" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City Photo" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/photo.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="photo.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+			<add-attribute value="photo.js" />
+		</put-list-attribute>
+	</definition>
+	<definition name="dashboard" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City Dashboard" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/dashboard.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="dashboard.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+			<add-attribute value="dashboard.js" />
+		</put-list-attribute>
+		<put-list-attribute name="dwr">
+			<add-attribute value="dashboard.js" />
+		</put-list-attribute>
+	</definition>
+	<definition name="editProfile" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City - Edit Your Profile" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/editProfile.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="editProfile.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+			<add-attribute value="editProfile.js" />
+		</put-list-attribute>
+		<!--		<put-list-attribute name="dwr">-->
+		<!--			<add-attribute value="editProfile.js" />-->
+		<!--		</put-list-attribute>-->
+	</definition>
+	<definition name="editPhotos" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City - Edit Your Photos" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/editPhotos.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="editPhotos.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+			<add-attribute value="editPhotos.js" />
+		</put-list-attribute>
+		<!--		<put-list-attribute name="dwr">-->
+		<!--			<add-attribute value="editProfile.js" />-->
+		<!--		</put-list-attribute>-->
+	</definition>
+	<definition name="inbox" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City - View Your Inbox" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/list.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="list.css" />
+			<add-attribute value="inbox.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+			<add-attribute value="list.js" />
+			<add-attribute value="inbox.js" />
+		</put-list-attribute>
+		<put-list-attribute name="dwr">
+			<add-attribute value="inbox.js" />
+		</put-list-attribute>
+	</definition>
+	<definition name="outbox" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City - View Your Outbox" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/list.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="list.css" />
+			<add-attribute value="inbox.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+			<add-attribute value="list.js" />
+			<add-attribute value="outbox.js" />
+		</put-list-attribute>
+		<put-list-attribute name="dwr">
+			<add-attribute value="outbox.js" />
+		</put-list-attribute>
+	</definition>
+	<definition name="composeMessage" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City - Compose a Message" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/composeMessage.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="composeMessage.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+		</put-list-attribute>
+	</definition>
+	<definition name="account" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City - Account Settings" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/account.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="account.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+			<add-attribute value="account.js" />
+		</put-list-attribute>
+		<put-list-attribute name="dwr">
+			<add-attribute value="account.js" />
+		</put-list-attribute>
+	</definition>
+	<definition name="password" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City - Get Your Password" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/password.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="password.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+			<add-attribute value="password.js" />
+		</put-list-attribute>
+		<put-list-attribute name="dwr">
+			<add-attribute value="password.js" />
+		</put-list-attribute>
+	</definition>	
+	<definition name="admin" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City - Admin Page" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/admin.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="admin.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+			<add-attribute value="admin.js" />
+		</put-list-attribute>
+		<put-list-attribute name="dwr">
+			<add-attribute value="admin.js" />
+		</put-list-attribute>
+	</definition>	
+	<definition name="register" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City - New Account" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/register.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="register.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+			<add-attribute value="register.js" />
+		</put-list-attribute>
+		<put-list-attribute name="dwr">
+			<add-attribute value="register.js" />
+		</put-list-attribute>
+	</definition>	
+	<definition name="postComment" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City - Post a Comment" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/postComment.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="postComment.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+		</put-list-attribute>
+	</definition>	
+	<definition name="confirmAccount" extends="BCC_Template">
+		<put-attribute name="title" value="Big Cyber City - Confirm Your Account" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/confirmAccount.jsp" />
+		<put-list-attribute name="css">
+			<add-attribute value="confirmAccount.css" />
+		</put-list-attribute>
+		<put-list-attribute name="js">
+		</put-list-attribute>
+	</definition>		
+	<definition name="testing" extends="BCC_Template">
+		<put-attribute name="title" value="Test page for various stuff" />
+		<put-attribute name="content" type="template"
+			value="/WEB-INF/jsp/testing.jsp" />
+	</definition>
+</tiles-definitions>

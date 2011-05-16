@@ -1,0 +1,126 @@
+/* CSS Document */
+body {
+	background-image: url(/static/images/bg.jpg);
+	background-repeat: repeat-x;
+	font-family: Trebuchet MS, Helvetica, sans-serif;
+	font-size: 18px;
+	letter-spacing: -1px;
+}
+
+.outer {
+	width: 760px;
+	clear: both;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.header {
+	padding-left: 30px;
+	padding-top: 52px;
+	padding-right: 30px;
+}
+
+.nav-box {
+	width: 320px;
+	float: right;
+	margin-top: 15px;
+	font-weight: bold;
+	color: #006699;
+	font-size: 13px;
+}
+
+.mid-section {
+	padding-top: 20px;
+}
+
+.content_area {
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 10px;
+}
+
+.noticebox {
+	background-color: #FFFFBF;
+	border: 1px solid #808080;
+	padding: 5px;
+	text-align: center;
+}
+
+.noticebox h1 {
+	border-bottom: 1px solid #808080;
+	font-size: 95%;
+}
+
+.small {
+	font-size: 90%;
+}
+
+.footer {
+	text-align: center;
+	font-size: 14px;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 10px;
+	clear: both;
+}
+
+A {
+	font-style: normal;
+	color: #006699;
+	text-decoration: none;
+}
+
+A:hover {
+	font-style: normal;
+	color: #15A300;
+	text-decoration: none;
+}
+
+A:visited :hover {
+	font-style: normal;
+	color: #15A300;
+	text-decoration: none;
+}
+
+.style1 {
+	font-size: 18px;
+	font-weight: bold;
+	color: #15a300;
+}
+
+.style2 {
+	color: #000000;
+	font-weight: bold;
+}
+
+.banner {
+	font-size: 10px;
+	padding-left: 5px;
+	text-align: left;
+}
+
+.title {
+	font-size: 36px;
+	font-weight: bold;
+	letter-spacing: -3px;
+	color: #006699;
+}
+
+.alerts {
+	font-size: 16pt;
+	font-weight: bold;
+	margin: 10px;
+	background: #FFFFCC none repeat scroll 0 0;
+	padding: 10px;
+	color: red;
+}
+
+.alerts ul {
+list-style-type: none;
+font-size: 18pt;
+margin: 10px;
+}
+
+.alerts li {
+margin: 10px
+}

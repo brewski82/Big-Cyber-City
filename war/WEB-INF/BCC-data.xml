@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    	   http://www.springframework.org/schema/tx 
+    	   http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- Properties file in WEB-INF/classes -->
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:bcc.properties</value>
+		</property>
+	</bean>
+
+	<!-- Database beans -->
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.user}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.bigcybercity.entity.Photo
+				</value>
+				<value>com.bigcybercity.entity.User
+				</value>
+				<value>com.bigcybercity.entity.Comment
+				</value>
+				<value>com.bigcybercity.entity.Friend
+				</value>
+				<value>com.bigcybercity.entity.Mail
+				</value>				
+				<value>com.bigcybercity.entity.Alert
+				</value>				
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLInnoDBDialect
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+	<bean id="userDao" class="com.bigcybercity.dao.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="photoDao" class="com.bigcybercity.dao.PhotoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+	<bean id="mailDao" class="com.bigcybercity.dao.MailDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>		
+
+	<bean id="userService" class="com.bigcybercity.service.UserServiceImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="userDao" ref="userDao" />
+	</bean>
+	
+	<bean id="photoService" class="com.bigcybercity.service.PhotoServiceImpl">
+		<property name="photoDao" ref="photoDao" />
+		<property name="userDao" ref="userDao" />
+	</bean>
+	
+	<bean id="sqlService" class="com.bigcybercity.service.SqlServiceImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- Transaction beans -->
+
+	<tx:annotation-driven />
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="authenticationManager" class="org.springframework.security.providers.ProviderManager">
+		<property name="providers">
+			<list>
+				<ref bean="authenticationProvider" />
+			</list>
+		</property>
+	</bean>
+	
+	<!--	Email-->
+	<bean id="mailSender"
+	    class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	  	<property name="host" value="<mail-host>" />
+		<property name="username" value="${mail.user}" />
+		<property name="password" value="${mail.password}" />	  
+	</bean>
+	
+	<bean id="mailService" class="com.bigcybercity.service.MailServiceImpl">
+		<property name="mailSender" ref="mailSender" />
+		<property name="userService" ref="userService" />
+	</bean>
+
+</beans>

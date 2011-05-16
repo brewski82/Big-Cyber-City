@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    	   
+	<bean id="authenticationProvider"
+		class="org.springframework.security.providers.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="authenticationDao" />
+	</bean>
+
+	<bean id="authenticationDao" class="com.bigcybercity.security.JdbcDaoUserIdImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="userDao" ref="userDao" />
+		<property name="usersByUsernameQuery">
+			<value>
+				SELECT email as username, password, enabled
+				FROM USERS
+				WHERE
+				email=?
+    </value>
+		</property>
+		<property name="authoritiesByUsernameQuery">
+			<value>
+				SELECT email as username, privilege as authority
+				FROM USERS
+				WHERE email=?
+  </value>
+		</property>
+
+	</bean>
+
+	<bean id="accessDecisionManager" class="org.springframework.security.vote.AffirmativeBased">
+		<property name="decisionVoters">
+			<list>
+				<ref bean="roleVoter" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="roleVoter" class="org.springframework.security.vote.RoleVoter" />
+	
+		<bean id="filterChainProxy" class="org.springframework.security.util.FilterChainProxy">
+		<property name="filterInvocationDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/**=httpSessionIntegrationFilter,logoutFilter,authenticationProcessingFilter, exceptionTranslationFilter,filterSecurityInterceptor
+    </value>
+		</property>
+	</bean>
+
+   <bean id="logoutFilter" class="org.springframework.security.ui.logout.LogoutFilter">
+      <constructor-arg value="/"/> <!-- URL redirected to after logout -->
+      <constructor-arg>
+         <list>
+              <bean class="org.springframework.security.ui.logout.SecurityContextLogoutHandler"/>
+         </list>
+      </constructor-arg>
+      </bean>
+      
+	<bean id="httpSessionIntegrationFilter"
+		class="org.springframework.security.context.HttpSessionContextIntegrationFilter" />
+
+	<bean id="authenticationEntryPoint"
+		class="org.springframework.security.ui.webapp.AuthenticationProcessingFilterEntryPoint">
+		<property name="loginFormUrl" value="/login.jsp" />
+		<property name="forceHttps" value="false" />
+	</bean>
+
+	<bean id="authenticationProcessingFilter"
+		class="org.springframework.security.ui.webapp.AuthenticationProcessingFilter">
+		<property name="filterProcessesUrl" value="/j_spring_security_check" />
+		<property name="authenticationFailureUrl" value="/login.jsp?login_error=1" />
+		<property name="defaultTargetUrl" value="/dashboard.htm" />
+		<property name="authenticationManager" ref="authenticationManager" />
+	</bean>
+
+	<bean id="exceptionTranslationFilter"
+		class="org.springframework.security.ui.ExceptionTranslationFilter">
+		<property name="authenticationEntryPoint" ref="authenticationEntryPoint" />
+		<property name="accessDeniedHandler" ref="accessDeniedHandler" />
+
+	</bean>
+
+	<bean id="accessDeniedHandler" class="org.springframework.security.ui.AccessDeniedHandlerImpl">
+		<property name="errorPage" value="/login.jsp" />
+	</bean>
+
+	<bean id="filterSecurityInterceptor"
+		class="org.springframework.security.intercept.web.FilterSecurityInterceptor">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="accessDecisionManager" ref="accessDecisionManager" />
+		<property name="objectDefinitionSource">
+			<value>
+				CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+				PATTERN_TYPE_APACHE_ANT
+				/dashboard.htm=ROLE_USER,ROLE_ADMINISTRATOR
+				/postedcomments.htm=ROLE_USER,ROLE_ADMINISTRATOR
+				/editprofile.htm=ROLE_USER,ROLE_ADMINISTRATOR
+				/editphotos.htm=ROLE_USER,ROLE_ADMINISTRATOR
+				/inbox.htm=ROLE_USER,ROLE_ADMINISTRATOR
+				/outbox.htm=ROLE_USER,ROLE_ADMINISTRATOR
+				/admin.htm=ROLE_ADMINISTRATOR
+				/friends.htm=ROLE_USER,ROLE_ADMINISTRATOR
+				/comments.htm=ROLE_USER,ROLE_ADMINISTRATOR
+				/account.htm=ROLE_USER,ROLE_ADMINISTRATOR
+				/composemessage.htm=ROLE_USER,ROLE_ADMINISTRATOR
+				/postcomment.htm=ROLE_USER,ROLE_ADMINISTRATOR
+			</value>
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,43 @@
+.contentslide {
+	border: 1px solid gray;
+	padding: 8px 0px 8px 0px;
+	width: 470px;
+	height: 220px;
+	margin-left: 200px;
+	margin-right: auto;
+	margin-top: 10px;
+}
+
+.contentslide .contentdiv {
+	display: none;
+}
+
+.pagination {
+	width: 470px;
+	/*Width of pagination DIV. To equal that of Content Slider's width, take into account the later's left/right paddings!*/
+	text-align: right;
+	background-color: white;
+	border: none;
+	/*Left/ right border width of pagination DIV.*/
+	padding: 0 0 4px 0;
+	margin-left: 200px;
+	margin-right: auto;
+}
+
+* html .pagination {
+	/*Simplified box model hack to get IE5 to display width equal to that of Content Slider's*/
+	width: 450px; /*IE5 width*/
+	w\idth: 450px; /*IE6 width*/
+}
+
+.pagination a {
+	padding: 0 5px;
+	text-decoration: none;
+	color: #2e6ab1;
+	background-color: white;
+}
+
+.pagination a:hover,.pagination a.selected {
+	color: #000;
+	background-color: #FEE496;
+}

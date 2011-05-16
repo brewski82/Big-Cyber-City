@@ -1,0 +1,22 @@
+#admin {
+	text-align: center;
+}
+
+#deleteAccount {
+	border: 1px solid #C9D7F1;
+	padding: 10px;
+	margin: 10px;
+}
+
+li {
+	margin: 10px
+}
+
+#alerts {
+	font-size: 16pt;
+	font-weight: bold;
+	margin: 10px;
+	background: #FFFFCC none repeat scroll 0 0;
+	padding: 10px;
+	color: red;
+}
